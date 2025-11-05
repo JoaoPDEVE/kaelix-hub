@@ -39,7 +39,7 @@ export function TeamSection() {
   }, [])
 
   return (
-    <section id="equipe" ref={sectionRef} className="py-20 lg:py-32 px-6 lg:px-12">
+    <section ref={sectionRef} className="w-full h-full flex items-center justify-center px-6 lg:px-12">
       <div className="container mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

@@ -4,14 +4,18 @@ import { DiscordLogo, List, X, CaretLeft, CaretRight } from '@phosphor-icons/rea
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navItems = [
-  { id: 'inicio', label: 'Início' },
-  { id: 'sobre', label: 'Sobre' },
-  { id: 'produto', label: 'Produto' },
-  { id: 'equipe', label: 'Equipe' },
-  { id: 'comunidade', label: 'Comunidade' },
+  { id: 'inicio', label: 'Início', index: 0 },
+  { id: 'sobre', label: 'Sobre', index: 1 },
+  { id: 'produto', label: 'Produto', index: 2 },
+  { id: 'equipe', label: 'Equipe', index: 3 },
+  { id: 'comunidade', label: 'Comunidade', index: 4 },
 ]
 
-export function Header() {
+interface HeaderProps {
+  onNavigate: (index: number) => void
+}
+
+export function Header({ onNavigate }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -54,12 +58,9 @@ export function Header() {
     }
   }
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setMobileMenuOpen(false)
-    }
+  const navigateToSection = (index: number) => {
+    onNavigate(index)
+    setMobileMenuOpen(false)
   }
 
   return (
@@ -80,7 +81,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
               className="text-2xl font-bold tracking-tight cursor-pointer neon-glow flex-shrink-0"
-              onClick={() => scrollToSection('inicio')}
+              onClick={() => navigateToSection(0)}
             >
               Kaelix Hub
             </motion.div>
@@ -108,7 +109,7 @@ export function Header() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + index * 0.1 }}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => navigateToSection(item.index)}
                     className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
                   >
                     {item.label}
@@ -165,7 +166,7 @@ export function Header() {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => navigateToSection(item.index)}
                   className="text-left text-lg font-medium hover:text-primary transition-colors py-2"
                 >
                   {item.label}

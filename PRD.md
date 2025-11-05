@@ -12,12 +12,12 @@ Kaelix Hub é uma plataforma premium de venda de scripts avançados para Roblox,
 
 ## Essential Features
 
-### Navegação por Scroll Suave
-- **Functionality**: Links do menu navegam instantaneamente para seções específicas da página
-- **Purpose**: Melhorar UX e permitir acesso rápido a diferentes áreas do site
+### Navegação Horizontal (Scroll Lateral)
+- **Functionality**: Links do menu navegam lateralmente entre seções que ficam lado a lado em tela cheia
+- **Purpose**: Criar experiência única e moderna, diferenciando-se de sites tradicionais com scroll vertical
 - **Trigger**: Clique em item do menu ou botão CTA
-- **Progression**: Usuário clica no link → página rola suavemente até a seção → seção fica visível
-- **Success criteria**: Scroll acontece de forma fluida em menos de 800ms, seção alvo fica perfeitamente posicionada
+- **Progression**: Usuário clica no link → página desliza horizontalmente até a seção → seção fica visível em tela cheia → usuário pode scrollar verticalmente dentro da seção se necessário
+- **Success criteria**: Scroll lateral acontece de forma fluida com snap points, cada seção ocupa 100vw, transições suaves entre seções
 
 ### Header Fixo com Estado
 - **Functionality**: Header permanece visível durante scroll com efeito de backdrop blur e borda neon

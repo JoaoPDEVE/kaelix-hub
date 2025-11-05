@@ -73,8 +73,7 @@ export function HeroSection() {
 
   return (
     <section
-      id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full h-full flex items-center justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #0a0a0f 0%, #1a001f 100%)',
       }}

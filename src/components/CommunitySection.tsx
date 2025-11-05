@@ -26,9 +26,8 @@ export function CommunitySection() {
 
   return (
     <section 
-      id="comunidade" 
       ref={sectionRef} 
-      className="py-20 lg:py-32 px-6 lg:px-12 bg-secondary/30"
+      className="w-full py-20 px-6 lg:px-12 bg-secondary/30"
     >
       <div className="container mx-auto max-w-4xl text-center">
         <motion.h2

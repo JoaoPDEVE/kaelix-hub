@@ -1,5 +1,5 @@
 import { DiscordLogo, GithubLogo, XLogo } from '@phosphor-icons/react'
-import { useLanguage } from '@/hooks/use-language'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 
 export function Footer() {

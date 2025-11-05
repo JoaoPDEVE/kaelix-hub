@@ -1,6 +1,6 @@
 import { Globe } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
-import { useLanguage } from '@/hooks/use-language'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
@@ -18,7 +18,7 @@ export function LanguageToggle() {
   const toggleDropdown = () => setIsOpen(!isOpen)
 
   const selectLanguage = (code: 'pt' | 'en') => {
-    setLanguage(code)
+    setLanguage(() => code)
     setIsOpen(false)
   }
 

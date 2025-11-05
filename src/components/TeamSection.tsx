@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Crown, DiscordLogo } from '@phosphor-icons/react'
-import { useLanguage } from '@/hooks/use-language'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 
 export function TeamSection() {

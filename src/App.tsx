@@ -7,6 +7,7 @@ import { TeamSection } from '@/components/TeamSection'
 import { CommunitySection } from '@/components/CommunitySection'
 import { Footer } from '@/components/Footer'
 import { InteractiveBackground } from '@/components/InteractiveBackground'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null)
@@ -22,32 +23,34 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden relative">
-      <InteractiveBackground variant="playful" />
-      <Header onNavigate={scrollToSection} />
-      <main 
-        ref={mainRef}
-        className="flex h-screen overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative z-10"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        <div className="flex-shrink-0 w-screen h-screen snap-start">
-          <HeroSection />
-        </div>
-        <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
-          <AboutSection />
-        </div>
-        <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
-          <ProductSection />
-        </div>
-        <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
-          <TeamSection />
-        </div>
-        <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto flex flex-col">
-          <CommunitySection />
-          <Footer />
-        </div>
-      </main>
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-hidden relative">
+        <InteractiveBackground variant="playful" />
+        <Header onNavigate={scrollToSection} />
+        <main 
+          ref={mainRef}
+          className="flex h-screen overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative z-10"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <div className="flex-shrink-0 w-screen h-screen snap-start">
+            <HeroSection />
+          </div>
+          <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
+            <AboutSection />
+          </div>
+          <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
+            <ProductSection />
+          </div>
+          <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
+            <TeamSection />
+          </div>
+          <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto flex flex-col">
+            <CommunitySection />
+            <Footer />
+          </div>
+        </main>
+      </div>
+    </LanguageProvider>
   )
 }
 

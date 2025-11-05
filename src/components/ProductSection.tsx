@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Circle } from '@phosphor-icons/react'
-import { useLanguage } from '@/hooks/use-language'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 
 const scripts = [

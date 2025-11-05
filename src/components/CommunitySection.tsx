@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { DiscordLogo, Users, ChatCircle, TrendUp, Shield } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
-import { useLanguage } from '@/hooks/use-language'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 
 export function CommunitySection() {

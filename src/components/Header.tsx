@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { DiscordLogo, List, X, CaretLeft, CaretRight, Play } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { useLanguage } from '@/hooks/use-language'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 import { LanguageToggle } from '@/components/LanguageToggle'
 

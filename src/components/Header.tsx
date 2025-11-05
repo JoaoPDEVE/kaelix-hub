@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { DiscordLogo, List, X, CaretLeft, CaretRight, Play } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { InteractiveBackground } from '@/components/InteractiveBackground'
 
 const navItems = [
   { id: 'inicio', label: 'Início', index: 0 },
@@ -73,9 +74,10 @@ export function Header({ onNavigate }: HeaderProps) {
           scrolled
             ? 'bg-background/80 backdrop-blur-lg border-b border-primary/50'
             : 'bg-transparent'
-        }`}
+        } relative overflow-hidden`}
       >
-        <div className="container mx-auto px-6 lg:px-12">
+        <InteractiveBackground variant="calm" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="flex items-center justify-between h-20 gap-4">
             <motion.div
               initial={{ opacity: 0 }}

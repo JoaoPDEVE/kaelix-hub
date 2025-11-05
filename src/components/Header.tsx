@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useLanguage } from '@/hooks/use-language'
 import { translations } from '@/lib/translations'
+import { LanguageToggle } from '@/components/LanguageToggle'
 
 interface HeaderProps {
   onNavigate: (index: number) => void
@@ -139,6 +140,8 @@ export function Header({ onNavigate }: HeaderProps) {
               transition={{ delay: 0.5 }}
               className="hidden md:flex gap-3 flex-shrink-0 items-center"
             >
+              <LanguageToggle />
+              
               <Dialog>
                 <DialogTrigger asChild>
                   <Button
@@ -212,6 +215,10 @@ export function Header({ onNavigate }: HeaderProps) {
             className="fixed top-20 right-0 bottom-0 w-64 bg-background/95 backdrop-blur-lg border-l border-primary/50 z-40 md:hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
+              <div className="mb-2">
+                <LanguageToggle />
+              </div>
+              
               {navItems.map((item) => (
                 <button
                   key={item.id}

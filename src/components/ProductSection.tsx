@@ -105,14 +105,27 @@ export function ProductSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="mt-12"
         >
-          <h3 className="text-3xl font-bold text-center mb-8">{t.product.scriptsTitle}</h3>
+          <div className="flex flex-col items-center gap-6 mb-8">
+            <h3 className="text-3xl font-bold text-center">{t.product.scriptsTitle}</h3>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-destructive/20 border border-destructive/50 neon-border"
+            >
+              <Circle weight="fill" className="text-destructive text-lg animate-pulse" />
+              <span className="text-base font-bold text-destructive">
+                GPO: {t.product.scriptStatus.development}
+              </span>
+            </motion.div>
+          </div>
           <div className="flex flex-col gap-4 max-w-2xl mx-auto">
             {scripts.map((script, index) => (
               <motion.div
                 key={script.name}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                 className="flex items-center justify-between bg-card/30 border border-border rounded-lg px-6 py-4 hover:border-primary/50 transition-all duration-300"
               >
                 <div className="flex items-center gap-4">

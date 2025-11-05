@@ -93,19 +93,6 @@ export function Header({ onNavigate, currentSection = 0 }: HeaderProps) {
               >
                 {t.header.brand}
               </motion.div>
-              {currentSection === 2 && (
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -10 }}
-                  className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md bg-destructive/20 border border-destructive/50"
-                >
-                  <Circle weight="fill" className="text-destructive text-sm" />
-                  <span className="text-sm font-semibold text-destructive">
-                    GPO: {language === 'pt' ? 'EM DESENVOLVIMENTO' : 'IN DEVELOPMENT'}
-                  </span>
-                </motion.div>
-              )}
             </div>
 
             <div className="hidden md:flex items-center gap-2 flex-1 max-w-2xl">

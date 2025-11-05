@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { DiscordLogo, List, X, CaretLeft, CaretRight } from '@phosphor-icons/react'
+import { DiscordLogo, List, X, CaretLeft, CaretRight, Play } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 
 const navItems = [
   { id: 'inicio', label: 'Início', index: 0 },
@@ -132,8 +133,52 @@ export function Header({ onNavigate }: HeaderProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden md:block flex-shrink-0"
+              className="hidden md:flex gap-3 flex-shrink-0"
             >
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="border-2 border-primary bg-transparent hover:bg-primary/20 text-white font-semibold gap-2"
+                  >
+                    <Play weight="fill" />
+                    Ver Demos
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl bg-background/95 backdrop-blur-lg border-primary/50">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold neon-glow">Demonstrações dos Scripts</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6 mt-4">
+                    <div className="space-y-3">
+                      <h3 className="text-lg font-semibold text-primary">Script Premium - Blox Fruits</h3>
+                      <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
+                        <iframe
+                          className="w-full h-full"
+                          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                          title="Demo Blox Fruits"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <h3 className="text-lg font-semibold text-primary">Script Universal</h3>
+                      <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
+                        <iframe
+                          className="w-full h-full"
+                          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                          title="Demo Universal"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+
               <Button
                 className="bg-primary hover:bg-accent text-white font-semibold gap-2 neon-border"
                 onClick={() => window.open('https://discord.gg/emVDERuSwf', '_blank', 'noopener,noreferrer')}
@@ -172,8 +217,51 @@ export function Header({ onNavigate }: HeaderProps) {
                   {item.label}
                 </button>
               ))}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="border-2 border-primary bg-transparent hover:bg-primary/20 text-white font-semibold gap-2 w-full"
+                  >
+                    <Play weight="fill" />
+                    Ver Demos
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-[95vw] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-lg border-primary/50">
+                  <DialogHeader>
+                    <DialogTitle className="text-xl font-bold neon-glow">Demonstrações dos Scripts</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-6 mt-4">
+                    <div className="space-y-3">
+                      <h3 className="text-base font-semibold text-primary">Script Premium - Blox Fruits</h3>
+                      <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
+                        <iframe
+                          className="w-full h-full"
+                          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                          title="Demo Blox Fruits"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <h3 className="text-base font-semibold text-primary">Script Universal</h3>
+                      <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
+                        <iframe
+                          className="w-full h-full"
+                          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                          title="Demo Universal"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
               <Button
-                className="bg-primary hover:bg-accent text-white font-semibold gap-2 mt-4 w-full"
+                className="bg-primary hover:bg-accent text-white font-semibold gap-2 w-full"
                 onClick={() => window.open('https://discord.gg/emVDERuSwf', '_blank', 'noopener,noreferrer')}
               >
                 <DiscordLogo weight="fill" />

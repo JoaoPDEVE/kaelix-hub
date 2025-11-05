@@ -7,13 +7,13 @@ const team = [
     name: 'Pedro',
     role: 'Fundador & Desenvolvedor',
     discord: 'carljohnsso_18173',
-    description: 'Líder técnico e criador da Kaelix Hub. Responsável pelo desenvolvimento dos scripts e integração do sistema.',
+    description: 'Fundador e desenvolvedor da Kaelix Hub. Atua na otimização e na infraestrutura da plataforma.',
   },
   {
     name: 'João',
     role: 'Fundador & Desenvolvedor',
     discord: 'j0_4_0alt',
-    description: 'Co-fundador e desenvolvedor da Kaelix Hub. Atua na otimização e na infraestrutura da plataforma.',
+    description: 'Líder técnico e criador da Kaelix Hub. Responsável pelo desenvolvimento dos scripts e integração do sistema.',
   },
 ]
 

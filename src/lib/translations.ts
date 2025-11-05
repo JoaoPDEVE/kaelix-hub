@@ -66,7 +66,7 @@ export const translations = {
         },
       },
       scriptStatus: {
-        development: 'DESENVOLVIMENTO',
+        development: 'EM DESENVOLVIMENTO',
       },
     },
     team: {
@@ -195,7 +195,7 @@ export const translations = {
         },
       },
       scriptStatus: {
-        development: 'DEVELOPMENT',
+        development: 'IN DEVELOPMENT',
       },
     },
     team: {

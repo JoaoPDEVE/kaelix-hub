@@ -12,20 +12,16 @@ export function TeamSection() {
 
   const team = [
     {
-      name: 'Pedro',
-      role: language === 'pt' ? 'Fundador & Web Designer' : 'Founder & Web Designer',
-      discord: 'carljohnsso_18173',
-      description: language === 'pt' 
-        ? 'Especialista em programação web e design, lidera a criação visual e arquitetura da plataforma Kaelix Hub. Responsável pela interface de usuário, experiência visual, desenvolvimento do site e toda a identidade digital da marca.'
-        : 'Expert in web programming and design, leads the visual creation and architecture of the Kaelix Hub platform. Responsible for user interface, visual experience, website development, and the entire digital brand identity.',
+      name: t.team.members.pedro.name,
+      role: t.team.members.pedro.role,
+      discord: t.team.members.pedro.discord,
+      description: t.team.members.pedro.description,
     },
     {
-      name: 'João',
-      role: language === 'pt' ? 'Fundador & Desenvolvedor de Scripts' : 'Founder & Script Developer',
-      discord: 'j0_4_0alt',
-      description: language === 'pt'
-        ? 'Responsável pela criação e desenvolvimento dos scripts premium para Roblox. Especialista em otimização de performance, segurança dos códigos e implementação de funcionalidades avançadas para os jogos.'
-        : 'Responsible for creating and developing premium scripts for Roblox. Expert in performance optimization, code security, and implementation of advanced features for games.',
+      name: t.team.members.joao.name,
+      role: t.team.members.joao.role,
+      discord: t.team.members.joao.discord,
+      description: t.team.members.joao.description,
     },
   ]
 
@@ -81,7 +77,7 @@ export function TeamSection() {
               <div className="space-y-4">
                 <div>
                   <p className="text-sm text-muted-foreground uppercase tracking-wide mb-1">
-                    {language === 'pt' ? 'Função' : 'Role'}
+                    {t.team.roleLabel}
                   </p>
                   <p className="text-lg font-semibold">{member.role}</p>
                 </div>
@@ -98,7 +94,7 @@ export function TeamSection() {
 
                 <div>
                   <p className="text-sm text-muted-foreground uppercase tracking-wide mb-2">
-                    {language === 'pt' ? 'Descrição' : 'Description'}
+                    {t.team.descriptionLabel}
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
                     {member.description}

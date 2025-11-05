@@ -72,16 +72,27 @@ export const translations = {
     team: {
       title: 'Nossa Equipe',
       description: 'Conheça os profissionais por trás da Kaelix Hub',
-      roles: {
-        founder: 'Fundador & Dev Principal',
-        backendDev: 'Desenvolvedor Backend',
-        uiDesigner: 'UI/UX Designer',
-        supportLead: 'Líder de Suporte',
+      roleLabel: 'Função',
+      descriptionLabel: 'Descrição',
+      members: {
+        pedro: {
+          name: 'Pedro',
+          role: 'Fundador & Web Designer',
+          discord: 'carljohnsso_18173',
+          description: 'Especialista em programação web e design, lidera a criação visual e arquitetura da plataforma Kaelix Hub. Responsável pela interface de usuário, experiência visual, desenvolvimento do site e toda a identidade digital da marca.',
+        },
+        joao: {
+          name: 'João',
+          role: 'Fundador & Desenvolvedor de Scripts',
+          discord: 'j0_4_0alt',
+          description: 'Responsável pela criação e desenvolvimento dos scripts premium para Roblox. Especialista em otimização de performance, segurança dos códigos e implementação de funcionalidades avançadas para os jogos.',
+        },
       },
     },
     community: {
       title: 'Junte-se à Comunidade',
       description: 'Faça parte do nosso servidor no Discord com milhares de membros ativos',
+      joinUs: 'Junte-se a Nós',
       joinCTA: 'Entre para Nossa Comunidade',
       subtitle1: 'Faça parte do nosso Discord e conecte-se com milhares de jogadores apaixonados por Roblox.',
       subtitle2: 'Tenha acesso a suporte técnico, atualizações exclusivas, eventos especiais e muito mais!',
@@ -113,8 +124,8 @@ export const translations = {
     },
     footer: {
       copyright: '© 2024 Kaelix Hub. Todos os direitos reservados.',
-      madeWith: 'Feito com',
-      by: 'pela equipe Kaelix',
+      madeWith: 'Desenvolvido com',
+      madeBy: 'por Pedro e João.',
     },
   },
   en: {
@@ -190,16 +201,27 @@ export const translations = {
     team: {
       title: 'Our Team',
       description: 'Meet the professionals behind Kaelix Hub',
-      roles: {
-        founder: 'Founder & Lead Dev',
-        backendDev: 'Backend Developer',
-        uiDesigner: 'UI/UX Designer',
-        supportLead: 'Support Lead',
+      roleLabel: 'Role',
+      descriptionLabel: 'Description',
+      members: {
+        pedro: {
+          name: 'Pedro',
+          role: 'Founder & Web Designer',
+          discord: 'carljohnsso_18173',
+          description: 'Expert in web programming and design, leads the visual creation and architecture of the Kaelix Hub platform. Responsible for user interface, visual experience, website development, and the entire digital brand identity.',
+        },
+        joao: {
+          name: 'João',
+          role: 'Founder & Script Developer',
+          discord: 'j0_4_0alt',
+          description: 'Responsible for creating and developing premium scripts for Roblox. Expert in performance optimization, code security, and implementation of advanced features for games.',
+        },
       },
     },
     community: {
       title: 'Join the Community',
       description: 'Be part of our Discord server with thousands of active members',
+      joinUs: 'Join Us',
       joinCTA: 'Join Our Community',
       subtitle1: 'Be part of our Discord and connect with thousands of passionate Roblox players.',
       subtitle2: 'Get access to technical support, exclusive updates, special events, and much more!',
@@ -232,7 +254,7 @@ export const translations = {
     footer: {
       copyright: '© 2024 Kaelix Hub. All rights reserved.',
       madeWith: 'Made with',
-      by: 'by the Kaelix team',
+      madeBy: 'by Pedro and João.',
     },
   },
 }

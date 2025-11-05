@@ -40,7 +40,7 @@ export function Footer() {
               {t.footer.copyright}
             </p>
             <p className="text-sm text-muted-foreground">
-              {language === 'pt' ? 'Desenvolvido com' : 'Made with'} <span className="text-primary">💜</span> {language === 'pt' ? 'por Pedro e João.' : 'by Pedro and João.'}
+              {t.footer.madeWith} <span className="text-primary">💜</span> {t.footer.madeBy}
             </p>
           </div>
         </div>

@@ -65,7 +65,7 @@ export function CommunitySection() {
               transition={{ duration: 0.5 }}
               className="inline-block mb-4 px-4 py-2 rounded-full glass-card"
             >
-              <span className="text-primary font-semibold">🚀 {language === 'pt' ? 'Junte-se a Nós' : 'Join Us'}</span>
+              <span className="text-primary font-semibold">🚀 {t.community.joinUs}</span>
             </motion.div>
 
             <motion.h2

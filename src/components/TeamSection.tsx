@@ -19,6 +19,7 @@ const team = [
 
 export function TeamSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -38,14 +39,81 @@ export function TeamSection() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect()
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        })
+      }
+    }
+
+    const section = sectionRef.current
+    if (section) {
+      section.addEventListener('mousemove', handleMouseMove)
+      return () => section.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
   return (
-    <section ref={sectionRef} className="w-full h-full flex items-center justify-center px-6 lg:px-12">
-      <div className="container mx-auto max-w-6xl">
+    <section ref={sectionRef} className="w-full h-full flex items-center justify-center px-6 lg:px-12 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: Math.random() * 100 + 50,
+              height: Math.random() * 100 + 50,
+              background: `radial-gradient(circle, oklch(0.62 0.27 295 / ${Math.random() * 0.3 + 0.1}), transparent)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: (mousePosition.x - window.innerWidth / 2) * (0.02 + i * 0.002),
+              y: (mousePosition.y - window.innerHeight / 2) * (0.02 + i * 0.002),
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              x: { duration: 0.5, ease: 'easeOut' },
+              y: { duration: 0.5, ease: 'easeOut' },
+              scale: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={`line-${i}`}
+            className="absolute h-px"
+            style={{
+              width: '100%',
+              background: `linear-gradient(90deg, transparent, oklch(0.62 0.27 295 / 0.2), transparent)`,
+              top: `${(i + 1) * 12.5}%`,
+            }}
+            animate={{
+              x: ['-100%', '100%'],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              ease: 'linear',
+              delay: i * 0.5,
+            }}
+          />
+        ))}
+      </div>
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 neon-glow"
         >
           Nossa Equipe
         </motion.h2>

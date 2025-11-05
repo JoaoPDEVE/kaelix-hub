@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-6">
           <div className="flex items-center gap-6">
             <a
-              href="https://discord.gg/SEULINKAQUI"
+              href="https://discord.gg/emVDERuSwf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"

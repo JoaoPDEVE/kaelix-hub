@@ -135,7 +135,7 @@ export function Header() {
             >
               <Button
                 className="bg-primary hover:bg-accent text-white font-semibold gap-2 neon-border"
-                onClick={() => window.open('https://discord.gg/SEULINKAQUI', '_blank', 'noopener,noreferrer')}
+                onClick={() => window.open('https://discord.gg/emVDERuSwf', '_blank', 'noopener,noreferrer')}
               >
                 <DiscordLogo weight="fill" />
                 Entrar no Discord
@@ -173,7 +173,7 @@ export function Header() {
               ))}
               <Button
                 className="bg-primary hover:bg-accent text-white font-semibold gap-2 mt-4 w-full"
-                onClick={() => window.open('https://discord.gg/SEULINKAQUI', '_blank', 'noopener,noreferrer')}
+                onClick={() => window.open('https://discord.gg/emVDERuSwf', '_blank', 'noopener,noreferrer')}
               >
                 <DiscordLogo weight="fill" />
                 Discord

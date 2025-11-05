@@ -2,30 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Circle } from '@phosphor-icons/react'
-
-const products = [
-  {
-    title: 'AutoFarm Inteligente',
-    description: 'Coleta e farma recursos automaticamente com eficiência máxima',
-  },
-  {
-    title: 'Fishing Bot Avançado',
-    description: 'Sistema de pesca otimizado com detecção automática',
-  },
-  {
-    title: 'Merchant Tracker',
-    description: 'Rastreia vendedores e automatiza compras estratégicas',
-  },
-  {
-    title: 'Executor Integrado',
-    description: 'Execução simples, rápida e protegida de scripts',
-  },
-]
+import { useLanguage } from '@/hooks/use-language'
+import { translations } from '@/lib/translations'
 
 const scripts = [
   {
     name: 'GPO',
-    status: 'DESENVOLVIMENTO',
+    statusKey: 'development' as const,
     color: 'text-destructive',
   },
 ]
@@ -33,6 +16,27 @@ const scripts = [
 export function ProductSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const { language } = useLanguage()
+  const t = translations[language || 'pt']
+
+  const products = [
+    {
+      title: t.product.products.autoFarm.title,
+      description: t.product.products.autoFarm.description,
+    },
+    {
+      title: t.product.products.fishing.title,
+      description: t.product.products.fishing.description,
+    },
+    {
+      title: t.product.products.merchant.title,
+      description: t.product.products.merchant.description,
+    },
+    {
+      title: t.product.products.executor.title,
+      description: t.product.products.executor.description,
+    },
+  ]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,7 +64,7 @@ export function ProductSection() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold text-center mb-8"
         >
-          Como Funciona
+          {t.product.title}
         </motion.h2>
 
         <motion.p
@@ -69,8 +73,7 @@ export function ProductSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center text-lg text-muted-foreground max-w-3xl mx-auto mb-16 leading-relaxed"
         >
-          Cada script da Kaelix Hub é desenvolvido com precisão e testado em múltiplos ambientes.
-          Oferecemos automações seguras, leves e eficientes para elevar sua jogabilidade no Roblox a outro nível.
+          {t.product.description}
         </motion.p>
 
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-16">
@@ -102,7 +105,7 @@ export function ProductSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="mt-12"
         >
-          <h3 className="text-3xl font-bold text-center mb-8">SCRIPTS</h3>
+          <h3 className="text-3xl font-bold text-center mb-8">{t.product.scriptsTitle}</h3>
           <div className="flex flex-col gap-4 max-w-2xl mx-auto">
             {scripts.map((script, index) => (
               <motion.div
@@ -115,7 +118,7 @@ export function ProductSection() {
                 <div className="flex items-center gap-4">
                   <span className="text-xl font-semibold">{script.name}</span>
                   <span className="text-muted-foreground">:</span>
-                  <span className="text-lg">{script.status}</span>
+                  <span className="text-lg">{t.product.scriptStatus[script.statusKey]}</span>
                 </div>
                 <Circle weight="fill" className={`${script.color} text-2xl`} />
               </motion.div>

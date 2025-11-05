@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { DiscordLogo, Users, ChatCircle, TrendUp, Shield } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
+import { useLanguage } from '@/hooks/use-language'
+import { translations } from '@/lib/translations'
 
 export function CommunitySection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const { language } = useLanguage()
+  const t = translations[language || 'pt']
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,23 +31,23 @@ export function CommunitySection() {
   const benefits = [
     {
       icon: <Users size={32} weight="duotone" />,
-      title: 'Comunidade Ativa',
-      description: 'Mais de 1.000+ membros ativos diariamente'
+      title: t.community.benefits.activeCommunity.title,
+      description: t.community.benefits.activeCommunity.description
     },
     {
       icon: <ChatCircle size={32} weight="duotone" />,
-      title: 'Suporte 24/7',
-      description: 'Equipe sempre disponível para ajudar'
+      title: t.community.benefits.support.title,
+      description: t.community.benefits.support.description
     },
     {
       icon: <TrendUp size={32} weight="duotone" />,
-      title: 'Atualizações Exclusivas',
-      description: 'Seja o primeiro a testar novos recursos'
+      title: t.community.benefits.updates.title,
+      description: t.community.benefits.updates.description
     },
     {
       icon: <Shield size={32} weight="duotone" />,
-      title: 'Ambiente Seguro',
-      description: 'Moderação ativa e regras claras'
+      title: t.community.benefits.safety.title,
+      description: t.community.benefits.safety.description
     }
   ]
 
@@ -61,7 +65,7 @@ export function CommunitySection() {
               transition={{ duration: 0.5 }}
               className="inline-block mb-4 px-4 py-2 rounded-full glass-card"
             >
-              <span className="text-primary font-semibold">🚀 Junte-se a Nós</span>
+              <span className="text-primary font-semibold">🚀 {language === 'pt' ? 'Junte-se a Nós' : 'Join Us'}</span>
             </motion.div>
 
             <motion.h2
@@ -70,7 +74,7 @@ export function CommunitySection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl md:text-6xl font-bold mb-6 neon-glow"
             >
-              Entre para Nossa Comunidade
+              {t.community.joinCTA}
             </motion.h2>
 
             <motion.p
@@ -79,7 +83,7 @@ export function CommunitySection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto"
             >
-              Faça parte do nosso Discord e conecte-se com milhares de jogadores apaixonados por Roblox.
+              {t.community.subtitle1}
             </motion.p>
 
             <motion.p
@@ -88,7 +92,7 @@ export function CommunitySection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg text-muted-foreground/80 mb-12 max-w-2xl mx-auto"
             >
-              Tenha acesso a suporte técnico, atualizações exclusivas, eventos especiais e muito mais!
+              {t.community.subtitle2}
             </motion.p>
           </div>
 
@@ -129,10 +133,10 @@ export function CommunitySection() {
               className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition-all font-semibold text-white text-lg pulse-neon hover:scale-105 transform"
             >
               <DiscordLogo weight="fill" size={32} />
-              Entrar no Discord Agora
+              {t.community.joinButton}
             </a>
             <p className="text-sm text-muted-foreground mt-4">
-              Grátis para sempre • Sem anúncios • Ambiente amigável
+              {t.community.freeForever}
             </p>
           </motion.div>
         </div>

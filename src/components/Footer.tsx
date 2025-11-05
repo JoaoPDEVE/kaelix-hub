@@ -1,6 +1,11 @@
 import { DiscordLogo, GithubLogo, XLogo } from '@phosphor-icons/react'
+import { useLanguage } from '@/hooks/use-language'
+import { translations } from '@/lib/translations'
 
 export function Footer() {
+  const { language } = useLanguage()
+  const t = translations[language || 'pt']
+  
   return (
     <footer className="w-full py-12 px-6 lg:px-12 border-t border-primary/30 mt-auto" style={{
       background: 'linear-gradient(180deg, rgba(10, 10, 15, 0.8) 0%, #1a001f 100%)',
@@ -32,10 +37,10 @@ export function Footer() {
 
           <div className="text-center space-y-2">
             <p className="text-sm text-muted-foreground">
-              © 2025 Kaelix Hub — Todos os direitos reservados.
+              {t.footer.copyright}
             </p>
             <p className="text-sm text-muted-foreground">
-              Desenvolvido com <span className="text-primary">💜</span> por Pedro e João.
+              {language === 'pt' ? 'Desenvolvido com' : 'Made with'} <span className="text-primary">💜</span> {language === 'pt' ? 'por Pedro e João.' : 'by Pedro and João.'}
             </p>
           </div>
         </div>

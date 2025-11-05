@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Code, Gear } from '@phosphor-icons/react'
+import { useLanguage } from '@/hooks/use-language'
+import { translations } from '@/lib/translations'
 
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { language } = useLanguage()
+  const t = translations[language || 'pt']
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -119,7 +123,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 neon-glow"
         >
-          Kaelix Hub
+          {t.hero.title}
         </motion.h1>
 
         <motion.h2
@@ -128,7 +132,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8"
         >
-          Os Melhores Scripts de Roblox do Mercado
+          {t.hero.subtitle}
         </motion.h2>
 
         <motion.p
@@ -137,7 +141,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
         >
-          Alta performance, segurança e suporte ativo 24 horas.
+          {t.hero.description}
         </motion.p>
       </div>
     </section>

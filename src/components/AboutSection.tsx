@@ -1,33 +1,37 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Rocket, LockKey, Brain, ChatCircleDots } from '@phosphor-icons/react'
-
-const features = [
-  {
-    icon: Rocket,
-    title: 'Performance Otimizada',
-    description: 'Scripts leves e eficientes que não comprometem seu desempenho',
-  },
-  {
-    icon: LockKey,
-    title: 'Segurança e Estabilidade',
-    description: 'Proteção avançada e execução confiável em todos os ambientes',
-  },
-  {
-    icon: Brain,
-    title: 'Atualizações Inteligentes',
-    description: 'Melhorias constantes baseadas em feedback e novas tecnologias',
-  },
-  {
-    icon: ChatCircleDots,
-    title: 'Suporte 24/7 via Discord',
-    description: 'Equipe sempre disponível para ajudar com qualquer dúvida',
-  },
-]
+import { useLanguage } from '@/hooks/use-language'
+import { translations } from '@/lib/translations'
 
 export function AboutSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
+  const { language } = useLanguage()
+  const t = translations[language || 'pt']
+
+  const features = [
+    {
+      icon: Rocket,
+      title: t.about.features.performance.title,
+      description: t.about.features.performance.description,
+    },
+    {
+      icon: LockKey,
+      title: t.about.features.security.title,
+      description: t.about.features.security.description,
+    },
+    {
+      icon: Brain,
+      title: t.about.features.updates.title,
+      description: t.about.features.updates.description,
+    },
+    {
+      icon: ChatCircleDots,
+      title: t.about.features.support.title,
+      description: t.about.features.support.description,
+    },
+  ]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,7 +59,7 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold text-center mb-12"
         >
-          Quem Somos
+          {t.about.title}
         </motion.h2>
 
         <motion.div
@@ -65,13 +69,13 @@ export function AboutSection() {
           className="text-center max-w-4xl mx-auto space-y-6 mb-16"
         >
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A Kaelix Hub nasceu da paixão por tecnologia e automação dentro do Roblox.
+            {t.about.paragraph1}
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Nosso objetivo é oferecer ferramentas seguras, rápidas e intuitivas, criadas por desenvolvedores experientes e apaixonados pelo que fazem.
+            {t.about.paragraph2}
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Com atualizações constantes, otimização de desempenho e uma comunidade ativa no Discord, garantimos a melhor experiência para nossos clientes.
+            {t.about.paragraph3}
           </p>
         </motion.div>
 

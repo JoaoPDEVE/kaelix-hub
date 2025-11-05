@@ -3,14 +3,8 @@ import { Button } from '@/components/ui/button'
 import { DiscordLogo, List, X, CaretLeft, CaretRight, Play } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-
-const navItems = [
-  { id: 'inicio', label: 'Início', index: 0 },
-  { id: 'sobre', label: 'Sobre', index: 1 },
-  { id: 'produto', label: 'Produto', index: 2 },
-  { id: 'equipe', label: 'Equipe', index: 3 },
-  { id: 'comunidade', label: 'Comunidade', index: 4 },
-]
+import { useLanguage } from '@/hooks/use-language'
+import { translations } from '@/lib/translations'
 
 interface HeaderProps {
   onNavigate: (index: number) => void
@@ -22,6 +16,16 @@ export function Header({ onNavigate }: HeaderProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
+  const { language, toggleLanguage } = useLanguage()
+  const t = translations[language || 'pt']
+
+  const navItems = [
+    { id: 'inicio', label: t.header.inicio, index: 0 },
+    { id: 'sobre', label: t.header.sobre, index: 1 },
+    { id: 'produto', label: t.header.produto, index: 2 },
+    { id: 'equipe', label: t.header.equipe, index: 3 },
+    { id: 'comunidade', label: t.header.comunidade, index: 4 },
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,7 +88,7 @@ export function Header({ onNavigate }: HeaderProps) {
               className="text-2xl font-bold tracking-tight cursor-pointer neon-glow flex-shrink-0"
               onClick={() => navigateToSection(0)}
             >
-              Kaelix Hub
+              {t.header.brand}
             </motion.div>
 
             <div className="hidden md:flex items-center gap-2 flex-1 max-w-2xl">
@@ -133,8 +137,17 @@ export function Header({ onNavigate }: HeaderProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden md:flex gap-3 flex-shrink-0"
+              className="hidden md:flex gap-3 flex-shrink-0 items-center"
             >
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleLanguage}
+                className="border-2 border-primary/50 bg-transparent hover:bg-primary/20 text-white font-bold px-3 py-1 h-9"
+              >
+                {language === 'pt' ? 'PT' : 'EN'}
+              </Button>
+              
               <Dialog>
                 <DialogTrigger asChild>
                   <Button
@@ -142,16 +155,16 @@ export function Header({ onNavigate }: HeaderProps) {
                     className="border-2 border-primary bg-transparent hover:bg-primary/20 text-white font-semibold gap-2"
                   >
                     <Play weight="fill" />
-                    Ver Demos
+                    {t.header.verDemos}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl bg-background/95 backdrop-blur-lg border-primary/50">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold neon-glow">Demonstrações dos Scripts</DialogTitle>
+                    <DialogTitle className="text-2xl font-bold neon-glow">{t.header.demosTitle}</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-6 mt-4">
                     <div className="space-y-3">
-                      <h3 className="text-lg font-semibold text-primary">Script Premium - Blox Fruits</h3>
+                      <h3 className="text-lg font-semibold text-primary">{t.header.scriptBloxFruits}</h3>
                       <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
                         <iframe
                           className="w-full h-full"
@@ -164,7 +177,7 @@ export function Header({ onNavigate }: HeaderProps) {
                     </div>
                     
                     <div className="space-y-3">
-                      <h3 className="text-lg font-semibold text-primary">Script Universal</h3>
+                      <h3 className="text-lg font-semibold text-primary">{t.header.scriptUniversal}</h3>
                       <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
                         <iframe
                           className="w-full h-full"
@@ -184,7 +197,7 @@ export function Header({ onNavigate }: HeaderProps) {
                 onClick={() => window.open('https://discord.gg/emVDERuSwf', '_blank', 'noopener,noreferrer')}
               >
                 <DiscordLogo weight="fill" />
-                Entrar no Discord
+                {t.header.entrarDiscord}
               </Button>
             </motion.div>
 
@@ -208,6 +221,15 @@ export function Header({ onNavigate }: HeaderProps) {
             className="fixed top-20 right-0 bottom-0 w-64 bg-background/95 backdrop-blur-lg border-l border-primary/50 z-40 md:hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleLanguage}
+                className="border-2 border-primary/50 bg-transparent hover:bg-primary/20 text-white font-bold w-full"
+              >
+                {language === 'pt' ? 'PT' : 'EN'}
+              </Button>
+              
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -224,16 +246,16 @@ export function Header({ onNavigate }: HeaderProps) {
                     className="border-2 border-primary bg-transparent hover:bg-primary/20 text-white font-semibold gap-2 w-full"
                   >
                     <Play weight="fill" />
-                    Ver Demos
+                    {t.header.verDemos}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-[95vw] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-lg border-primary/50">
                   <DialogHeader>
-                    <DialogTitle className="text-xl font-bold neon-glow">Demonstrações dos Scripts</DialogTitle>
+                    <DialogTitle className="text-xl font-bold neon-glow">{t.header.demosTitle}</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-6 mt-4">
                     <div className="space-y-3">
-                      <h3 className="text-base font-semibold text-primary">Script Premium - Blox Fruits</h3>
+                      <h3 className="text-base font-semibold text-primary">{t.header.scriptBloxFruits}</h3>
                       <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
                         <iframe
                           className="w-full h-full"
@@ -246,7 +268,7 @@ export function Header({ onNavigate }: HeaderProps) {
                     </div>
                     
                     <div className="space-y-3">
-                      <h3 className="text-base font-semibold text-primary">Script Universal</h3>
+                      <h3 className="text-base font-semibold text-primary">{t.header.scriptUniversal}</h3>
                       <div className="aspect-video bg-secondary/50 rounded-lg overflow-hidden border border-primary/30">
                         <iframe
                           className="w-full h-full"
@@ -265,7 +287,7 @@ export function Header({ onNavigate }: HeaderProps) {
                 onClick={() => window.open('https://discord.gg/emVDERuSwf', '_blank', 'noopener,noreferrer')}
               >
                 <DiscordLogo weight="fill" />
-                Discord
+                {t.header.discord}
               </Button>
             </nav>
           </motion.div>

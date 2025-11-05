@@ -102,3 +102,7 @@
 .pulse-neon {
   animation: pulse-neon 2s ease-in-out infinite;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

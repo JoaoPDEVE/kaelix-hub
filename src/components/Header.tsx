@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { DiscordLogo, List, X } from '@phosphor-icons/react'
+import { DiscordLogo, List, X, CaretLeft, CaretRight } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navItems = [
@@ -14,6 +14,9 @@ const navItems = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +25,34 @@ export function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    checkScrollButtons()
+  }, [])
+
+  const checkScrollButtons = () => {
+    if (navRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = navRef.current
+      setCanScrollLeft(scrollLeft > 0)
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
+    }
+  }
+
+  const scrollNav = (direction: 'left' | 'right') => {
+    if (navRef.current) {
+      const scrollAmount = 200
+      const newScrollLeft = direction === 'left' 
+        ? navRef.current.scrollLeft - scrollAmount 
+        : navRef.current.scrollLeft + scrollAmount
+      
+      navRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      })
+      
+      setTimeout(checkScrollButtons, 300)
+    }
+  }
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -43,37 +74,64 @@ export function Header() {
         }`}
       >
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 gap-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl font-bold tracking-tight cursor-pointer neon-glow"
+              className="text-2xl font-bold tracking-tight cursor-pointer neon-glow flex-shrink-0"
               onClick={() => scrollToSection('inicio')}
             >
               Kaelix Hub
             </motion.div>
 
-            <nav className="hidden md:flex items-center gap-8">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.id}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium hover:text-primary transition-colors"
+            <div className="hidden md:flex items-center gap-2 flex-1 max-w-2xl">
+              {canScrollLeft && (
+                <button
+                  onClick={() => scrollNav('left')}
+                  className="text-primary hover:text-accent transition-colors flex-shrink-0"
+                  aria-label="Scroll left"
                 >
-                  {item.label}
-                </motion.button>
-              ))}
-            </nav>
+                  <CaretLeft size={24} weight="bold" />
+                </button>
+              )}
+              
+              <nav 
+                ref={navRef}
+                onScroll={checkScrollButtons}
+                className="flex items-center gap-8 overflow-x-auto scrollbar-hide flex-1"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </nav>
+
+              {canScrollRight && (
+                <button
+                  onClick={() => scrollNav('right')}
+                  className="text-primary hover:text-accent transition-colors flex-shrink-0"
+                  aria-label="Scroll right"
+                >
+                  <CaretRight size={24} weight="bold" />
+                </button>
+              )}
+            </div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden md:block"
+              className="hidden md:block flex-shrink-0"
             >
               <Button
                 className="bg-primary hover:bg-accent text-white font-semibold gap-2 neon-border"

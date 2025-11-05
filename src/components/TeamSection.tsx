@@ -5,15 +5,15 @@ import { Crown, DiscordLogo } from '@phosphor-icons/react'
 const team = [
   {
     name: 'Pedro',
-    role: 'Fundador & Desenvolvedor',
+    role: 'Fundador & Web Designer',
     discord: 'carljohnsso_18173',
-    description: 'Especialista em programação web e design, lidera o desenvolvimento técnico da Kaelix Hub. Responsável pela criação dos scripts, arquitetura do sistema, interface de usuário e experiência visual da plataforma.',
+    description: 'Especialista em programação web e design, lidera a criação visual e arquitetura da plataforma Kaelix Hub. Responsável pela interface de usuário, experiência visual, desenvolvimento do site e toda a identidade digital da marca.',
   },
   {
     name: 'João',
-    role: 'Fundador & Desenvolvedor',
+    role: 'Fundador & Desenvolvedor de Scripts',
     discord: 'j0_4_0alt',
-    description: 'Co-fundador e desenvolvedor da Kaelix Hub. Focado na otimização de performance, infraestrutura do servidor e manutenção da estabilidade da plataforma.',
+    description: 'Responsável pela criação e desenvolvimento dos scripts premium para Roblox. Especialista em otimização de performance, segurança dos códigos e implementação de funcionalidades avançadas para os jogos.',
   },
 ]
 

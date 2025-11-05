@@ -58,55 +58,41 @@ export function TeamSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="w-full h-full flex items-center justify-center px-6 lg:px-12 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => (
+    <section ref={sectionRef} className="w-full h-full flex items-center justify-center px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-background via-secondary/20 to-background">
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        {Array.from({ length: 6 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full"
+            className="absolute rounded-full blur-3xl"
             style={{
-              width: Math.random() * 100 + 50,
-              height: Math.random() * 100 + 50,
-              background: `radial-gradient(circle, oklch(0.62 0.27 295 / ${Math.random() * 0.3 + 0.1}), transparent)`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: Math.random() * 300 + 200,
+              height: Math.random() * 300 + 200,
+              background: `radial-gradient(circle, oklch(0.62 0.27 295 / 0.15), transparent 70%)`,
+              left: `${(i * 25) % 100}%`,
+              top: `${(i * 33) % 100}%`,
             }}
             animate={{
-              x: (mousePosition.x - window.innerWidth / 2) * (0.02 + i * 0.002),
-              y: (mousePosition.y - window.innerHeight / 2) * (0.02 + i * 0.002),
-              scale: [1, 1.2, 1],
+              x: (mousePosition.x - window.innerWidth / 2) * (0.01 + i * 0.003),
+              y: (mousePosition.y - window.innerHeight / 2) * (0.01 + i * 0.003),
+              scale: [1, 1.1, 1],
             }}
             transition={{
-              x: { duration: 0.5, ease: 'easeOut' },
-              y: { duration: 0.5, ease: 'easeOut' },
-              scale: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+              x: { duration: 1, ease: 'easeOut' },
+              y: { duration: 1, ease: 'easeOut' },
+              scale: { duration: 8, repeat: Infinity, ease: 'easeInOut', delay: i * 0.5 },
             }}
           />
         ))}
       </div>
 
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <motion.div
-            key={`line-${i}`}
-            className="absolute h-px"
-            style={{
-              width: '100%',
-              background: `linear-gradient(90deg, transparent, oklch(0.62 0.27 295 / 0.2), transparent)`,
-              top: `${(i + 1) * 12.5}%`,
-            }}
-            animate={{
-              x: ['-100%', '100%'],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              ease: 'linear',
-              delay: i * 0.5,
-            }}
-          />
-        ))}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, oklch(0.62 0.27 295 / 0.1) 0%, transparent 50%)`,
+          }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        />
       </div>
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.h2

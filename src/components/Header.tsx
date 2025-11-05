@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { DiscordLogo, List, X, CaretLeft, CaretRight, Play } from '@phosphor-icons/react'
+import { DiscordLogo, List, X, CaretLeft, CaretRight, Play, Circle } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -9,9 +9,10 @@ import { LanguageToggle } from '@/components/LanguageToggle'
 
 interface HeaderProps {
   onNavigate: (index: number) => void
+  currentSection?: number
 }
 
-export function Header({ onNavigate }: HeaderProps) {
+export function Header({ onNavigate, currentSection = 0 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -82,15 +83,30 @@ export function Header({ onNavigate }: HeaderProps) {
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20 gap-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-2xl font-bold tracking-tight cursor-pointer neon-glow flex-shrink-0"
-              onClick={() => navigateToSection(0)}
-            >
-              {t.header.brand}
-            </motion.div>
+            <div className="flex items-center gap-4 flex-shrink-0">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-2xl font-bold tracking-tight cursor-pointer neon-glow"
+                onClick={() => navigateToSection(0)}
+              >
+                {t.header.brand}
+              </motion.div>
+              {currentSection === 2 && (
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md bg-destructive/20 border border-destructive/50"
+                >
+                  <Circle weight="fill" className="text-destructive text-sm" />
+                  <span className="text-sm font-semibold text-destructive">
+                    GPO: {language === 'pt' ? 'EM DESENVOLVIMENTO' : 'IN DEVELOPMENT'}
+                  </span>
+                </motion.div>
+              )}
+            </div>
 
             <div className="hidden md:flex items-center gap-2 flex-1 max-w-2xl">
               {canScrollLeft && (

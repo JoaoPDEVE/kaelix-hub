@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Header } from '@/components/Header'
 import { HeroSection } from '@/components/HeroSection'
 import { AboutSection } from '@/components/AboutSection'
@@ -11,6 +11,7 @@ import { LanguageProvider } from '@/contexts/LanguageContext'
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null)
+  const [currentSection, setCurrentSection] = useState(0)
 
   const scrollToSection = (index: number) => {
     if (mainRef.current) {
@@ -22,11 +23,28 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mainRef.current) {
+        const scrollLeft = mainRef.current.scrollLeft
+        const sectionWidth = window.innerWidth
+        const section = Math.round(scrollLeft / sectionWidth)
+        setCurrentSection(section)
+      }
+    }
+
+    const mainElement = mainRef.current
+    if (mainElement) {
+      mainElement.addEventListener('scroll', handleScroll)
+      return () => mainElement.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-background text-foreground overflow-hidden relative">
         <InteractiveBackground variant="playful" />
-        <Header onNavigate={scrollToSection} />
+        <Header onNavigate={scrollToSection} currentSection={currentSection} />
         <main 
           ref={mainRef}
           className="flex h-screen overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative z-10"

@@ -16,7 +16,7 @@ export function Header({ onNavigate }: HeaderProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
-  const { language, toggleLanguage } = useLanguage()
+  const { language } = useLanguage()
   const t = translations[language || 'pt']
 
   const navItems = [
@@ -139,15 +139,6 @@ export function Header({ onNavigate }: HeaderProps) {
               transition={{ delay: 0.5 }}
               className="hidden md:flex gap-3 flex-shrink-0 items-center"
             >
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={toggleLanguage}
-                className="border-2 border-primary/50 bg-transparent hover:bg-primary/20 text-white font-bold px-3 py-1 h-9"
-              >
-                {language === 'pt' ? 'PT' : 'EN'}
-              </Button>
-              
               <Dialog>
                 <DialogTrigger asChild>
                   <Button
@@ -221,15 +212,6 @@ export function Header({ onNavigate }: HeaderProps) {
             className="fixed top-20 right-0 bottom-0 w-64 bg-background/95 backdrop-blur-lg border-l border-primary/50 z-40 md:hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={toggleLanguage}
-                className="border-2 border-primary/50 bg-transparent hover:bg-primary/20 text-white font-bold w-full"
-              >
-                {language === 'pt' ? 'PT' : 'EN'}
-              </Button>
-              
               {navItems.map((item) => (
                 <button
                   key={item.id}

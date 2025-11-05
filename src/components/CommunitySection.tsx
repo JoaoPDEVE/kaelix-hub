@@ -53,7 +53,7 @@ export function CommunitySection() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <a
-            href="https://discord.com/invite/SEULINKAQUI"
+            href="https://discord.gg/emVDERuSwf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition font-semibold text-white"

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const products = [
@@ -65,7 +64,7 @@ export function ProductSection() {
           Oferecemos automações seguras, leves e eficientes para elevar sua jogabilidade no Roblox a outro nível.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {products.map((product, index) => (
             <motion.div
               key={product.title}
@@ -86,20 +85,6 @@ export function ProductSection() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center"
-        >
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-accent text-white font-semibold text-base px-8 py-6 neon-border"
-          >
-            Ver Planos e Preços
-          </Button>
-        </motion.div>
       </div>
     </section>
   )

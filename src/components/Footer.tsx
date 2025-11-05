@@ -2,7 +2,7 @@ import { DiscordLogo, GithubLogo, XLogo } from '@phosphor-icons/react'
 
 export function Footer() {
   return (
-    <footer className="py-12 px-6 lg:px-12 border-t border-primary/30" style={{
+    <footer className="py-16 px-6 lg:px-12 border-t border-primary/30 mt-16" style={{
       background: 'linear-gradient(180deg, #0a0a0f 0%, #1a001f 100%)',
     }}>
       <div className="container mx-auto max-w-6xl">

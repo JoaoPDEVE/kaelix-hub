@@ -64,13 +64,14 @@ export function ProductSection() {
           Oferecemos automações seguras, leves e eficientes para elevar sua jogabilidade no Roblox a outro nível.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {products.map((product, index) => (
             <motion.div
               key={product.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, x: -30 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              className="flex-1"
             >
               <Card className="bg-card/50 border-border hover:border-primary transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(125,44,255,0.3)] h-full">
                 <CardHeader>

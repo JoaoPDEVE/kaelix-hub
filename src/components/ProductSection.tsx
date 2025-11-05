@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Circle } from '@phosphor-icons/react'
 
 const products = [
   {
@@ -18,6 +19,14 @@ const products = [
   {
     title: 'Executor Integrado',
     description: 'Execução simples, rápida e protegida de scripts',
+  },
+]
+
+const scripts = [
+  {
+    name: 'GPO',
+    status: 'DESENVOLVIMENTO',
+    color: 'text-destructive',
   },
 ]
 
@@ -64,7 +73,7 @@ export function ProductSection() {
           Oferecemos automações seguras, leves e eficientes para elevar sua jogabilidade no Roblox a outro nível.
         </motion.p>
 
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-16">
           {products.map((product, index) => (
             <motion.div
               key={product.title}
@@ -86,6 +95,33 @@ export function ProductSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-12"
+        >
+          <h3 className="text-3xl font-bold text-center mb-8">SCRIPTS</h3>
+          <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+            {scripts.map((script, index) => (
+              <motion.div
+                key={script.name}
+                initial={{ opacity: 0, x: -20 }}
+                animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                className="flex items-center justify-between bg-card/30 border border-border rounded-lg px-6 py-4 hover:border-primary/50 transition-all duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-xl font-semibold">{script.name}</span>
+                  <span className="text-muted-foreground">:</span>
+                  <span className="text-lg">{script.status}</span>
+                </div>
+                <Circle weight="fill" className={`${script.color} text-2xl`} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

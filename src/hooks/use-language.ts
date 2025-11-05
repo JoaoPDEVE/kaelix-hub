@@ -5,8 +5,10 @@ export type Language = 'pt' | 'en'
 export function useLanguage() {
   const [language, setLanguage] = useKV<Language>('app-language', 'pt')
 
+  const currentLanguage: Language = language || 'pt'
+
   return { 
-    language: language || 'pt', 
+    language: currentLanguage, 
     setLanguage 
   }
 }

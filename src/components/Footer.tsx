@@ -4,7 +4,7 @@ import { translations } from '@/lib/translations'
 
 export function Footer() {
   const { language } = useLanguage()
-  const t = translations[language || 'pt']
+  const t = translations[language]
   
   return (
     <footer className="w-full py-12 px-6 lg:px-12 border-t border-primary/30 mt-auto" style={{

@@ -18,7 +18,7 @@ export function LanguageToggle() {
   const toggleDropdown = () => setIsOpen(!isOpen)
 
   const selectLanguage = (code: 'pt' | 'en') => {
-    setLanguage(() => code)
+    setLanguage(code)
     setIsOpen(false)
   }
 

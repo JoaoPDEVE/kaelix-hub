@@ -7,7 +7,7 @@ import { translations } from '@/lib/translations'
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { language } = useLanguage()
-  const t = translations[language || 'pt']
+  const t = translations[language]
 
   useEffect(() => {
     const canvas = canvasRef.current

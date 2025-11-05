@@ -18,7 +18,7 @@ export function Header({ onNavigate }: HeaderProps) {
   const [canScrollRight, setCanScrollRight] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
   const { language } = useLanguage()
-  const t = translations[language || 'pt']
+  const t = translations[language]
 
   const navItems = [
     { id: 'inicio', label: t.header.inicio, index: 0 },

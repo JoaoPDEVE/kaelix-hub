@@ -17,7 +17,7 @@ export function ProductSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
   const { language } = useLanguage()
-  const t = translations[language || 'pt']
+  const t = translations[language]
 
   const products = [
     {

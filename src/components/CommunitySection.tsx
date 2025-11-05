@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { DiscordLogo } from '@phosphor-icons/react'
 
 export function CommunitySection() {
@@ -53,14 +52,15 @@ export function CommunitySection() {
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-accent text-white font-semibold text-lg px-12 py-8 gap-3 pulse-neon text-base"
-            onClick={() => window.open('https://discord.gg/SEULINKAQUI', '_blank', 'noopener,noreferrer')}
+          <a
+            href="https://discord.com/invite/SEULINKAQUI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition font-semibold text-white"
           >
             <DiscordLogo weight="fill" size={28} />
             Entrar no Discord
-          </Button>
+          </a>
         </motion.div>
       </div>
     </section>

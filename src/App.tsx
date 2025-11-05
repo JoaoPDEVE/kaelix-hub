@@ -40,7 +40,7 @@ function App() {
         <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
           <TeamSection />
         </div>
-        <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto">
+        <div className="flex-shrink-0 w-screen h-screen snap-start overflow-y-auto flex flex-col">
           <CommunitySection />
           <Footer />
         </div>

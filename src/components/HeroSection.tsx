@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { DiscordLogo, Code, Gear } from '@phosphor-icons/react'
+import { Code, Gear } from '@phosphor-icons/react'
 
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -140,29 +139,6 @@ export function HeroSection() {
         >
           Alta performance, segurança e suporte ativo 24 horas.
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-accent text-white font-semibold text-base px-8 py-6 neon-border"
-          >
-            Comprar Agora
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-primary bg-transparent hover:bg-primary/20 text-white font-semibold text-base px-8 py-6 gap-2"
-            onClick={() => window.open('https://discord.gg/SEULINKAQUI', '_blank', 'noopener,noreferrer')}
-          >
-            <DiscordLogo weight="fill" />
-            Entrar no Discord
-          </Button>
-        </motion.div>
       </div>
     </section>
   )

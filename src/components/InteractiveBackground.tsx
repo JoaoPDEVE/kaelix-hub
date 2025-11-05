@@ -14,8 +14,8 @@ export function InteractiveBackground({ variant = 'calm' }: InteractiveBackgroun
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
 
     const particles: Array<{
       x: number
@@ -50,17 +50,16 @@ export function InteractiveBackground({ variant = 'calm' }: InteractiveBackgroun
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      mouse.x = e.clientX - rect.left
-      mouse.y = e.clientY - rect.top
+      mouse.x = e.clientX
+      mouse.y = e.clientY
     }
 
     const handleResize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
 
-    canvas.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('resize', handleResize)
 
     const animate = () => {
@@ -127,7 +126,7 @@ export function InteractiveBackground({ variant = 'calm' }: InteractiveBackgroun
     animate()
 
     return () => {
-      canvas.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('resize', handleResize)
     }
   }, [variant])
@@ -135,7 +134,7 @@ export function InteractiveBackground({ variant = 'calm' }: InteractiveBackgroun
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
       style={{ opacity: 0.6 }}
     />
   )

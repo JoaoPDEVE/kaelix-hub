@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Crown, DiscordLogo } from '@phosphor-icons/react'
-import { InteractiveBackground } from '@/components/InteractiveBackground'
 
 const team = [
   {
@@ -41,7 +40,6 @@ export function TeamSection() {
 
   return (
     <section ref={sectionRef} className="w-full h-full flex items-center justify-center px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-background via-secondary/20 to-background">
-      <InteractiveBackground variant="playful" />
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

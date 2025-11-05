@@ -5,14 +5,6 @@ import { Circle } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 
-const scripts = [
-  {
-    name: 'GPO',
-    statusKey: 'development' as const,
-    color: 'text-destructive',
-  },
-]
-
 export function ProductSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -105,7 +97,7 @@ export function ProductSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="mt-12"
         >
-          <div className="flex flex-col items-center gap-6 mb-8">
+          <div className="flex flex-col items-center gap-6">
             <h3 className="text-3xl font-bold text-center">{t.product.scriptsTitle}</h3>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -118,24 +110,6 @@ export function ProductSection() {
                 GPO: {t.product.scriptStatus.development}
               </span>
             </motion.div>
-          </div>
-          <div className="flex flex-col gap-4 max-w-2xl mx-auto">
-            {scripts.map((script, index) => (
-              <motion.div
-                key={script.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                className="flex items-center justify-between bg-card/30 border border-border rounded-lg px-6 py-4 hover:border-primary/50 transition-all duration-300"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-xl font-semibold">{script.name}</span>
-                  <span className="text-muted-foreground">:</span>
-                  <span className="text-lg">{t.product.scriptStatus[script.statusKey]}</span>
-                </div>
-                <Circle weight="fill" className={`${script.color} text-2xl`} />
-              </motion.div>
-            ))}
           </div>
         </motion.div>
       </div>

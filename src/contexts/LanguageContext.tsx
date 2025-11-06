@@ -14,6 +14,11 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((prev: T) => T)) => void] {
   // Get initial value from localStorage or use the provided initial value
   const [storedValue, setStoredValue] = useState<T>(() => {
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') {
+      return initialValue
+    }
+    
     try {
       const item = window.localStorage.getItem(key)
       return item ? JSON.parse(item) : initialValue
@@ -26,9 +31,16 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((pre
   // Update localStorage when the value changes
   const setValue = (value: T | ((prev: T) => T)) => {
     try {
+      // Compute the new value
       const valueToStore = value instanceof Function ? value(storedValue) : value
+      
+      // Update localStorage first
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(key, JSON.stringify(valueToStore))
+      }
+      
+      // Then update state
       setStoredValue(valueToStore)
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
     } catch (error) {
       console.warn(`Error setting localStorage key "${key}":`, error)
     }

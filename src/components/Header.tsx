@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { DiscordLogo, List, X, CaretLeft, CaretRight, Play, Circle } from '@phosphor-icons/react'
+import { DiscordLogo, List, X, CaretLeft, CaretRight, Play } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -12,7 +12,7 @@ interface HeaderProps {
   currentSection?: number
 }
 
-export function Header({ onNavigate, currentSection = 0 }: HeaderProps) {
+export function Header({ onNavigate, currentSection: _currentSection = 0 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
